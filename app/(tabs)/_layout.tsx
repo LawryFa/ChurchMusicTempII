@@ -1,19 +1,11 @@
 import { Tabs } from 'expo-router';
-import { Heart, Home, Calendar, MessageCircle, User } from 'lucide-react-native';
+import { Heart, Home, Calendar, MessageCircle, User, HandHeart } from 'lucide-react-native';
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: '#ffffff',
-          borderTopWidth: 0,
-          elevation: 0,
-          shadowOpacity: 0,
-          height: 60,
-          paddingBottom: 10,
-        },
         tabBarActiveTintColor: '#6366f1',
         tabBarInactiveTintColor: '#94a3b8',
       }}>
@@ -24,13 +16,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }) => <Home size={size} color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="donate"
-        options={{
-          title: 'Donate',
-          tabBarIcon: ({ color, size }) => <Heart size={size} color={color} />,
-        }}
-      />
+     
       <Tabs.Screen
         name="events"
         options={{
@@ -43,6 +29,13 @@ export default function TabLayout() {
         options={{
           title: 'Chat',
           tabBarIcon: ({ color, size }) => <MessageCircle size={size} color={color} />,
+        }}
+      />
+       <Tabs.Screen
+        name="donate"
+        options={{
+          title: 'Donate',
+          tabBarIcon: ({ color, size }) => <HandHeart size={size} color={color} />,
         }}
       />
       <Tabs.Screen

@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Bell, Calendar, Users, BookOpen } from 'lucide-react-native';
+import { Bell, Calendar, Users, BookOpen, Music, Video, Church, MessageCircle, HandHeart, SettingsIcon } from 'lucide-react-native';
+import { Link } from 'expo-router';
 
 export default function HomeScreen() {
   return (
@@ -10,28 +11,67 @@ export default function HomeScreen() {
         style={styles.header}>
         <View style={styles.headerContent}>
           <Text style={styles.welcomeText}>Welcome to</Text>
-          <Text style={styles.churchName}>Grace Community Church</Text>
+          <Text style={styles.churchName}>Rainbow Ministries Church</Text>
         </View>
       </LinearGradient>
 
       <View style={styles.content}>
         <View style={styles.quickActions}>
-          <View style={styles.actionCard}>
-            <Bell color="#6366f1" size={24} />
-            <Text style={styles.actionText}>Announcements</Text>
-          </View>
-          <View style={styles.actionCard}>
-            <Calendar color="#6366f1" size={24} />
-            <Text style={styles.actionText}>Events</Text>
-          </View>
-          <View style={styles.actionCard}>
-            <Users color="#6366f1" size={24} />
-            <Text style={styles.actionText}>Members</Text>
-          </View>
-          <View style={styles.actionCard}>
-            <BookOpen color="#6366f1" size={24} />
-            <Text style={styles.actionText}>Newsletters</Text>
-          </View>
+          <Link href="/music/(tabs)" asChild>
+            <TouchableOpacity style={styles.actionCard}>
+              <Music color="#6366f1" size={24} />
+              <Text style={styles.actionText}>Music</Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/music/(tabs)" asChild>
+            <TouchableOpacity style={styles.actionCard}>
+              <Video color="#6366f1" size={24} />
+              <Text style={styles.actionText}>Videos</Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/music/(tabs)/library" asChild>
+            <TouchableOpacity style={styles.actionCard}>
+              <Church color="#6366f1" size={24} />
+              <Text style={styles.actionText}>Sermons</Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/chat" asChild>
+            <TouchableOpacity style={styles.actionCard}>
+              <MessageCircle color="#6366f1" size={24} />
+              <Text style={styles.actionText}>Chatroom</Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/donate" asChild>
+            <TouchableOpacity style={styles.actionCard}>
+              <HandHeart color="#6366f1" size={24} />
+              <Text style={styles.actionText}>Donations</Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/events" asChild>
+            <TouchableOpacity style={styles.actionCard}>
+              <BookOpen color="#6366f1" size={24} />
+              <Text style={styles.actionText}>Bible Study</Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/profile" asChild>
+            <TouchableOpacity style={styles.actionCard}>
+              <Users color="#6366f1" size={24} />
+              <Text style={styles.actionText}>Members</Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/profile" asChild>
+            <TouchableOpacity style={styles.actionCard}>
+              <SettingsIcon color="#6366f1" size={24} />
+              <Text style={styles.actionText}>Settings</Text>
+            </TouchableOpacity>
+          </Link>
         </View>
 
         <View style={styles.section}>
@@ -97,7 +137,8 @@ const styles = StyleSheet.create({
   quickActions: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: -40,
+    justifyContent: 'space-between', // Ensure space between cards
+    marginTop: 20, // Add margin to prevent overlap with header
     marginBottom: 20,
   },
   actionCard: {
@@ -105,7 +146,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     margin: 4,
-    width: '48%',
+    width: '47%', // Two cards per row with a bit smaller width
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },

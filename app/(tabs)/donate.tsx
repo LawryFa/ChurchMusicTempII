@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Heart } from 'lucide-react-native';
+import { HandHeart, Heart } from 'lucide-react-native';
 
 export default function DonateScreen() {
   const [name, setName] = useState('');
@@ -29,7 +29,7 @@ export default function DonateScreen() {
         colors={['#6366f1', '#4f46e5']}
         style={styles.header}>
         <View style={styles.headerContent}>
-          <Heart color="#fff" size={40} />
+          <HandHeart color="#fff" size={40} />
           <Text style={styles.headerTitle}>Make a Donation</Text>
           <Text style={styles.headerSubtitle}>
             Support our ministry and make a difference
@@ -142,6 +142,7 @@ const styles = StyleSheet.create({
     marginTop: -40,
   },
   card: {
+    marginTop: 49,
     backgroundColor: '#fff',
     borderRadius: 16,
     padding: 24,
